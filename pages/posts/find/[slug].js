@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import { API_URL, POST_PER_PAGE } from "@/config/index";
+import DOMPurify from "isomorphic-dompurify";
 import marked from "marked";
 
 export default function Post({ post }) {
@@ -21,7 +22,9 @@ export default function Post({ post }) {
           </div>
           <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
             <div
-              dangerouslySetInnerHTML={{ __html: marked(post?.content) }}
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(marked(post?.content)),
+              }}
             ></div>
           </div>
         </div>

@@ -5,7 +5,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import moment from "moment";
 import localization from "moment/locale/ja";
 import Link from "next/link";
-import { fill } from "tailwindcss/defaultTheme";
 
 export default function Posts({
   posts,
@@ -71,10 +70,7 @@ export default function Posts({
                     </a>
                   </div>
                   <div className="mt-6 flex items-center">
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-900">
-                        Posted:
-                      </p>
+                    <div className="ml-1">
                       <div className="flex space-x-1 text-sm text-gray-500">
                         <time dateTime={post.published_at}>
                           {moment(post.published_at).format("LL")}
@@ -133,7 +129,6 @@ export default function Posts({
                 </a>
               </Link>
 
-              {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
               {pageCounter.map((page, number) => (
                 <Link key={number} href={"/posts/" + (number + 1)}>
                   <a
