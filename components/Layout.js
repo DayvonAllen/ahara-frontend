@@ -14,7 +14,7 @@ export default function Layout({ title, keywords, description, children }) {
       </Head>
       {router.pathname !== "/404" && <Navbar />}
       <div className="flex-grow">{children}</div>
-      {!router.pathname.includes("/posts/page/") &&
+      {!router.pathname.includes("/posts/page") &&
         router.pathname !== "/posts" &&
         router.pathname !== "/" &&
         router.pathname !== "/404" && <Footer />}
