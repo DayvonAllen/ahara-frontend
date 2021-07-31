@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { SearchIcon } from "@heroicons/react/solid";
 import SearchResults from "./SearchResults";
 import Layout from "./Layout";
 
-export default function Search() {
+export default function Search({ posts }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -12,8 +11,19 @@ export default function Search() {
       if (searchTerm === "") {
         setSearchResults([]);
       } else {
-        const res = await fetch(`/api/search?q=${searchTerm?.toLowerCase()}`);
-        const { results } = await res.json();
+        const resultArr = posts?.filter(
+          ({ title, category }) =>
+            title?.toLowerCase().indexOf(searchTerm) !== -1 ||
+            category?.slug?.toLowerCase().indexOf(searchTerm) !== -1
+        );
+
+        const results = [];
+        for (let i = 0; i < resultArr.length; i++) {
+          results.push(resultArr[i]);
+          if (i === 8) {
+            break;
+          }
+        }
         setSearchResults(results);
       }
     };
