@@ -5,6 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import moment from "moment";
 import localization from "moment/locale/ja";
 import Link from "next/link";
+import PostDetails from "@/components/PostDetails";
 
 export default function Posts({
   posts,
