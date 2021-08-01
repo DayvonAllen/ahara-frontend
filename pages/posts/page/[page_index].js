@@ -1,11 +1,13 @@
 import Layout from "@/components/Layout";
 import { API_URL, POST_PER_PAGE } from "@/config/index";
-import Image from "next/image";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import moment from "moment";
 import localization from "moment/locale/ja";
 import Link from "next/link";
 import PostDetails from "@/components/PostDetails";
+import {
+  ArrowNarrowLeftIcon,
+  ArrowNarrowRightIcon,
+} from "@heroicons/react/solid";
 
 export default function Posts({
   posts,
@@ -43,75 +45,51 @@ export default function Posts({
             ))}
           </div>
         </div>
-      </div>
-      <div
-        className={`flex items-end max-h-screen ${
-          numberOfPosts < 2 ? "h-full" : ""
-        } w-full`}
-      >
-        <div className="bg-white px-4 py-3 flex items-center w-full justify-between border-t border-gray-200 sm:px-6">
-          <div className="flex-1 flex justify-between sm:hidden">
-            <Link href={`/posts/page/${currentPage - 1}`}>
-              <a className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                Previous
-              </a>
-            </Link>
-            <Link href={`/posts/page/${currentPage + 1}`}>
-              <a className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                Next
-              </a>
-            </Link>
+        <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-9 md:w-1/2  mx-auto flex-grow">
+          <div className="-mt-px w-0 flex-1 flex z-50">
+            {currentPage - 1 >= 1 && (
+              <Link href={`/posts/page/${currentPage - 1}`}>
+                <a className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                  <ArrowNarrowLeftIcon
+                    className="mr-3 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  Previous
+                </a>
+              </Link>
+            )}
           </div>
-          <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-            <div>
-              <p className="text-sm text-gray-700">
-                Showing <span className="font-medium">{pagePostCount + 1}</span>{" "}
-                to{" "}
-                <span className="font-medium">
-                  {pagePostCount + numberOfPosts}
-                </span>{" "}
-                of <span className="font-medium">{max}</span> results
-              </p>
-            </div>
-            <div>
-              <nav
-                className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
-                aria-label="Pagination"
-              >
-                <Link
-                  href={`/posts/page/${currentPage - 1}`}
-                  className={currentPage === 1 && "disabled-link"}
+          <div className="hidden md:-mt-px md:flex z-50">
+            {pageCounter.map((page, number) => (
+              <Link key={number} href={"/posts/page/" + (number + 1)}>
+                <a
+                  key={number}
+                  aria-current="page"
+                  className={`${
+                    number + 1 === currentPage
+                      ? "border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+                  }`}
                 >
-                  <a className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                    <span className="sr-only">Previous</span>
-                    <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-                  </a>
-                </Link>
-
-                {pageCounter.map((page, number) => (
-                  <Link key={number} href={"/posts/page/" + (number + 1)}>
-                    <a
-                      key={number}
-                      aria-current="page"
-                      className={`z-10 ${
-                        number + 1 === currentPage &&
-                        "bg-indigo-50 border-indigo-500 text-indigo-600"
-                      } relative inline-flex items-center px-4 py-2 border text-sm font-medium`}
-                    >
-                      {number + 1 + ""}
-                    </a>
-                  </Link>
-                ))}
-                <Link href={`/posts/page/${currentPage + 1}`}>
-                  <a className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                    <span className="sr-only">Next</span>
-                    <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-                  </a>
-                </Link>
-              </nav>
-            </div>
+                  {number + 1 + ""}
+                </a>
+              </Link>
+            ))}
           </div>
-        </div>
+          <div className="-mt-px w-0 flex-1 flex justify-end z-50">
+            {currentPage + 1 <= numPages && (
+              <Link href={`/posts/page/${currentPage + 1}`}>
+                <a className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                  Next
+                  <ArrowNarrowRightIcon
+                    className="ml-3 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </a>
+              </Link>
+            )}
+          </div>
+        </nav>
       </div>
     </Layout>
   );
