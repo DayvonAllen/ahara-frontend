@@ -40,7 +40,7 @@ export default function PostDetails({ post }) {
               <span aria-hidden="true">&middot;</span>
               <Link key={post.id} href={`/posts/find/${post?.slug}`}>
                 <a>
-                  <span> Read More</span>
+                  <span className="hover:text-indigo-500"> Read More</span>
                 </a>
               </Link>
             </div>

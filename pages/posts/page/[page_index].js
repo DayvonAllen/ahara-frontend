@@ -88,7 +88,10 @@ export default function Posts({
                   <a
                     key={number}
                     aria-current="page"
-                    className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                    className={`z-10 ${
+                      number + 1 === currentPage &&
+                      "bg-indigo-50 border-indigo-500 text-indigo-600"
+                    } relative inline-flex items-center px-4 py-2 border text-sm font-medium`}
                   >
                     {number + 1 + ""}
                   </a>

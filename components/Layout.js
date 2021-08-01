@@ -6,14 +6,22 @@ export default function Layout({ title, keywords, description, children }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col h-screen">
+    <div
+      className={`flex flex-col ${
+        !router.pathname.includes("/posts") ? "h-screen" : ""
+      }`}
+    >
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
       </Head>
       {router.pathname !== "/404" && <Navbar />}
-      <div className="flex-grow">{children}</div>
+      <div
+        className={`${!router.pathname.includes("/posts") ? "flex-grow" : ""}`}
+      >
+        {children}
+      </div>
       {!router.pathname.includes("/posts/page") &&
         router.pathname !== "/posts" &&
         router.pathname !== "/" &&

@@ -13,7 +13,12 @@ export default function Example() {
   const router = useRouter();
 
   const navigation = [
-    { name: "Posts", href: "/", current: router.pathname === "/" },
+    {
+      name: "Posts",
+      href: "/",
+      current:
+        router.pathname === "/" || router.pathname.includes("/posts/page/"),
+    },
     {
       name: "Categories",
       href: "/categories",
