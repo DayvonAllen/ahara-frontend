@@ -213,58 +213,47 @@ export default function Navbar() {
                     <nav>
                       <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
                         {solutions.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50"
-                          >
-                            <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                              <item.icon
-                                className="h-6 w-6"
-                                aria-hidden="true"
-                              />
-                            </div>
-                            <div className="ml-4 text-base font-medium text-gray-900">
-                              {item.name}
-                            </div>
-                          </a>
+                          <Link href={item?.href}>
+                            <a
+                              key={item.name}
+                              className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50"
+                            >
+                              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
+                                <item.icon
+                                  className="h-6 w-6"
+                                  aria-hidden="true"
+                                />
+                              </div>
+                              <div className="ml-4 text-base font-medium text-gray-900">
+                                {item.name}
+                              </div>
+                            </a>
+                          </Link>
                         ))}
-                      </div>
-                      <div className="mt-8 text-base">
-                        <a
-                          href="#"
-                          className="font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                          {" "}
-                          View all categories{" "}
-                          <span aria-hidden="true">&rarr;</span>
-                        </a>
                       </div>
                     </nav>
                   </div>
                 </div>
                 <div className="py-6 px-5">
                   <div className="grid grid-cols-2 gap-4">
-                    <a
-                      href="#"
-                      className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Home
-                    </a>
-
-                    <a
-                      href="#"
-                      className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Search
-                    </a>
-
-                    <a
-                      href="#"
-                      className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      About
-                    </a>
+                    <Link href="/">
+                      <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                        Home
+                      </a>
+                    </Link>
+                    <Link href="/search">
+                      <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                        Search
+                      </a>
+                    </Link>
+                    <Link href="/about">
+                      <a
+                        href="#"
+                        className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
+                      >
+                        About
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>
