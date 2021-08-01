@@ -11,11 +11,18 @@ export default async (req, res) => {
     posts = data;
   }
 
-  const results = posts?.filter(
+  const resultArr = posts?.filter(
     ({ title, category }) =>
       title?.toLowerCase().indexOf(req.query.q) !== -1 ||
       category?.slug?.toLowerCase().indexOf(req.query.q) !== -1
   );
-  console.log(results);
+
+  const results = [];
+  for (let i = 0; i < resultArr.length; i++) {
+    results.push(resultArr[i]);
+    if (i === 8) {
+      break;
+    }
+  }
   res.status(200).json({ results });
 };

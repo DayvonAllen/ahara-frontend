@@ -23,7 +23,7 @@ export default function Search() {
 
   return (
     <Layout>
-      <div className="flex justify-center h-12 mt-40 sm:absolute sm:inset-0">
+      <div className="flex justify-center h-12 lg:mt-40 sm:mt-48 sm:absolute sm:inset-0">
         <input
           id="search"
           name="search"
