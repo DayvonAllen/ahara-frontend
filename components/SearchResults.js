@@ -1,10 +1,29 @@
+import { useEffect, useState } from "react";
 import PostDetails from "./PostDetails";
+import LazyLoad from "react-lazyload";
 
-export default function SearchResults({ results }) {
+export default function SearchResults({ results, posts, searchTerm }) {
+  const [foundPosts, setFoundPosts] = useState(posts);
+  const [errors, setErrors] = useState(false);
+
+  useEffect(() => {
+    if (results.length > 0) {
+      setFoundPosts(results);
+      setErrors(false);
+    } else {
+      if (searchTerm?.length === 0) {
+        setFoundPosts(posts);
+        setErrors(false);
+      } else {
+        setErrors(true);
+      }
+    }
+  }, [searchTerm, results]);
+
   return (
     <div
       className={`relative ${
-        results.length > 0 ? "bg-gray-50" : "bg-white"
+        !errors ? "bg-gray-50" : "bg-white"
       } pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8`}
     >
       <div className="absolute inset-none">
@@ -12,9 +31,8 @@ export default function SearchResults({ results }) {
       </div>
       <div className="relative max-w-7xl mx-auto">
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {results.map((post) => (
-            <PostDetails post={post} />
-          ))}
+          {!errors && foundPosts.map((post) => <PostDetails post={post} />)}
+          {errors && <p>No Result Found</p>}
         </div>
       </div>
     </div>

@@ -7,15 +7,6 @@ import { API_URL } from "../config";
 export default function Layout({ title, keywords, description, children }) {
   const router = useRouter();
 
-  const fetchCat = async () => {
-    const res = await fetch(`${API_URL}/categories`);
-    const categories = await res.json();
-
-    console.log(categories);
-  };
-
-  fetchCat();
-
   return (
     <div
       className={`flex flex-col ${

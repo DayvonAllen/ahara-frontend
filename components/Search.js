@@ -13,8 +13,9 @@ export default function Search({ posts }) {
       } else {
         const resultArr = posts?.filter(
           ({ title, category }) =>
-            title?.toLowerCase().indexOf(searchTerm) !== -1 ||
-            category?.slug?.toLowerCase().indexOf(searchTerm) !== -1
+            title?.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
+            category?.slug?.toLowerCase().indexOf(searchTerm.toLowerCase()) !==
+              -1
         );
 
         const results = [];
@@ -33,7 +34,7 @@ export default function Search({ posts }) {
 
   return (
     <Layout>
-      <div className="flex justify-center h-12 lg:mt-40 sm:mt-62 sm:absolute sm:inset-0 z-50 ">
+      <div className="flex justify-center h-12 lg:mt-40 sm:mt-62 sm:absolute sm:inset-0 z-40 ">
         <input
           id="search"
           name="search"
@@ -44,7 +45,11 @@ export default function Search({ posts }) {
         />
       </div>
       <div className="mt-36">
-        <SearchResults results={searchResults} />
+        <SearchResults
+          results={searchResults}
+          posts={posts}
+          searchTerm={searchTerm}
+        />
       </div>
     </Layout>
   );
