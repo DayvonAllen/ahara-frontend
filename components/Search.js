@@ -34,7 +34,7 @@ export default function Search({ posts }) {
 
   return (
     <Layout>
-      <div className="flex justify-center h-12 lg:mt-40 sm:mt-62 sm:absolute sm:inset-0 z-40 ">
+      <div className="flex justify-center h-12 lg:mt-40 sm:mt-32 sm:absolute sm:inset-0 z-40">
         <input
           id="search"
           name="search"

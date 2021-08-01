@@ -85,9 +85,9 @@ export default function Categories({ categories }) {
   return (
     <Layout>
       <div className="text-center w-1/2 mx-auto mt-6">
-        <h2 className="text-gray-500  font-medium uppercase tracking-wide">
+        <h1 className="text-gray-500  font-medium uppercase tracking-wide">
           Categories
-        </h2>
+        </h1>
         <ul className="mt-8 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {returnedCategories.map((category, i) => (
             <li
