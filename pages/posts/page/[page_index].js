@@ -45,7 +45,13 @@ export default function Posts({
             ))}
           </div>
         </div>
-        <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-9 md:w-1/2  mx-auto flex-grow">
+        <nav
+          className={`${
+            numberOfPosts < 4
+              ? "h-3/4 mt-6 flex items-end md:w-1/2 justify-between mx-auto  px-4"
+              : "border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-9 md:w-1/2 mx-auto flex-grow"
+          }`}
+        >
           <div className="-mt-px w-0 flex-1 flex z-50">
             {currentPage - 1 >= 1 && (
               <Link href={`/posts/page/${currentPage - 1}`}>
