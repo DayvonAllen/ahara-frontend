@@ -22,9 +22,9 @@ export default function PostDetails({ post }) {
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
           <p className="text-sm font-medium text-indigo-600">
-            <a href={post.category.href} className="hover:underline">
-              {post.category.name}
-            </a>
+            <Link href={`/categories/page/${post.category.slug}`}>
+              <a className="hover:underline">{post.category.name}</a>
+            </Link>
           </p>
           <a href={post.href} className="block mt-2">
             <p className="text-xl font-semibold text-gray-900">{post.title}</p>

@@ -18,13 +18,14 @@ function classNames(...classes) {
 function Navbar({ categories }) {
   const icons = [ChartBarIcon, CursorClickIcon, ShieldCheckIcon];
 
-  const featuredCategories = categories.slice(2);
+  const featuredCategories = categories.slice(0, 3);
 
   const fetchedCategories = featuredCategories.map((cat, i) => {
     cat.icon = icons[i];
     cat.href = `/categories/page/${cat.slug}/`;
     return cat;
   });
+  console.log(fetchedCategories);
 
   fetchedCategories.push({
     name: "All Categories",
@@ -112,7 +113,7 @@ function Navbar({ categories }) {
                           >
                             <div className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
                               {fetchedCategories.map((category) => (
-                                <Link key={category.name} href={category.href}>
+                                <Link key={category.slug} href={category.href}>
                                   <a className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
                                     <div className="flex md:h-full lg:flex-col">
                                       <div className="flex-shrink-0">
@@ -188,7 +189,7 @@ function Navbar({ categories }) {
                     <nav>
                       <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
                         {fetchedCategories.map((category, i) => (
-                          <Link key={category.name + i} href={category?.href}>
+                          <Link key={category.slug + i} href={category?.href}>
                             <a className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50">
                               <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
                                 <category.icon
