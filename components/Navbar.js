@@ -1,21 +1,10 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import {
-  BookmarkAltIcon,
-  BriefcaseIcon,
   ChartBarIcon,
-  CheckCircleIcon,
   CursorClickIcon,
-  DesktopComputerIcon,
-  GlobeAltIcon,
-  InformationCircleIcon,
   MenuIcon,
-  NewspaperIcon,
-  OfficeBuildingIcon,
-  PhoneIcon,
-  PlayIcon,
   ShieldCheckIcon,
-  UserGroupIcon,
   ViewGridIcon,
   XIcon,
 } from "@heroicons/react/outline";
@@ -33,7 +22,7 @@ function Navbar({ categories }) {
 
   const fetchedCategories = featuredCategories.map((cat, i) => {
     cat.icon = icons[i];
-    cat.href = `/categories/page/${cat.slug}`;
+    cat.href = `/categories/page/${cat.slug}/`;
     return cat;
   });
 

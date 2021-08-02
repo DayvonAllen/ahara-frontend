@@ -22,14 +22,16 @@ export default function Layout({
         <meta name="keywords" content={keywords} />
       </Head>
       {router.pathname !== "/404" && <Navbar categories={fetchedCategories} />}
-      {router.pathname !== "/categories" && (
+      {router.pathname !== "/categories" &&
+      !router.pathname.includes("/posts/find") ? (
         <div className="flex-grow bg-gray-50 "></div>
-      )}
+      ) : null}
       <div
         className={`${
-          router.pathname === "/categories" &&
-          "flex-grow h-full flex items-center"
-        }`}
+          router.pathname === "/categories"
+            ? "flex-grow h-full flex items-center"
+            : ""
+        } ${router.pathname.includes("/posts/find") ? "flex-grow" : ""}`}
       >
         {children}
       </div>

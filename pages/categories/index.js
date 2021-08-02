@@ -30,32 +30,28 @@ export default function Categories({ categories }) {
         </h1>
         <ul className="mt-8 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {returnedCategories.map((category, i) => (
-            <li
-              key={category.name}
-              className="col-span-1 flex shadow-md rounded-md"
-            >
-              <div
-                className={classNames(
-                  category?.bgColor,
-                  "flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md"
-                )}
-              >
-                {category.name[0]?.toUpperCase()}
-              </div>
-              <div className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
-                <div className="flex-1 px-4 py-2 text-sm truncate">
-                  <Link href={`/categories/page/${category.slug}`}>
-                    <a
-                      className={
-                        "text-gray-900 font-medium hover:text-gray-400"
-                      }
-                    >
+            <Link href={`/categories/page/${category.slug}`}>
+              <a className={"text-gray-900 font-medium hover:text-gray-400"}>
+                <li
+                  key={category.name}
+                  className="col-span-1 flex shadow-md rounded-md"
+                >
+                  <div
+                    className={classNames(
+                      category?.bgColor,
+                      "flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md"
+                    )}
+                  >
+                    {category.name[0]?.toUpperCase()}
+                  </div>
+                  <div className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                    <div className="flex-1 px-4 py-2 text-sm truncate">
                       {category.name.toUpperCase()}
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </li>
+                    </div>
+                  </div>
+                </li>
+              </a>
+            </Link>
           ))}
         </ul>
       </div>
