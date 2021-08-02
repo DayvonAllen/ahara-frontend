@@ -1,8 +1,6 @@
 import { API_URL } from "@/config/index";
-import { useEffect, useState } from "react";
 import PostDetails from "@/components/PostDetails";
 import Layout from "@/components/Layout";
-// import LazyLoad from "react-lazyload";
 
 export default function CategoryResults({ foundPosts, categories }) {
   return (
@@ -61,6 +59,6 @@ export async function getStaticProps({ params }) {
       foundPosts,
       categories,
     },
-    revalidate: 1,
+    revalidate: 300,
   };
 }
