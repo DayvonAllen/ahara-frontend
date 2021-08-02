@@ -14,7 +14,7 @@ export default function Search({ posts, categories }) {
         const resultArr = posts?.filter(
           ({ title, category }) =>
             title?.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ||
-            category?.slug?.toLowerCase().indexOf(searchTerm.toLowerCase()) !==
+            category?.name?.toLowerCase().indexOf(searchTerm.toLowerCase()) !==
               -1
         );
 

@@ -2,26 +2,11 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import Link from "next/link";
 
-const colors = [
-  "bg-pink-600",
-  "bg-purple-600",
-  "bg-yellow-500",
-  "bg-green-500",
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Categories({ categories }) {
-  const returnedCategories = categories?.map((category, i) => {
-    if (i < 4) {
-      category.bgColor = colors[i];
-    } else {
-      category.bgColor = colors[Math.ceil(i / 4)];
-    }
-    return category;
-  });
   return (
     <Layout categories={categories}>
       <div className="text-center w-1/2 mx-auto">
@@ -29,7 +14,7 @@ export default function Categories({ categories }) {
           Categories
         </h1>
         <ul className="mt-8 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {returnedCategories.map((category, i) => (
+          {categories.map((category, i) => (
             <Link
               key={category.name + i}
               href={`/categories/page/${category.slug}`}
@@ -41,7 +26,7 @@ export default function Categories({ categories }) {
                 >
                   <div
                     className={classNames(
-                      category?.bgColor,
+                      "bg-purple-600",
                       "flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md"
                     )}
                   >
