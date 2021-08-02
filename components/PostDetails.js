@@ -12,7 +12,7 @@ export default function PostDetails({ post }) {
       className="flex flex-col rounded-lg shadow-lg overflow-hidden"
     >
       <div className="flex-shrink-0">
-        <LazyLoad offset={400} height={300} once>
+        <LazyLoad offset={400} height={100} once>
           <Image
             className="h-48 w-full object-cover"
             src={post.image ? post.image.formats.medium.url : ""}
@@ -25,7 +25,7 @@ export default function PostDetails({ post }) {
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <LazyLoad offset={400} height={300} once>
+          <LazyLoad offset={400} height={100} once>
             <p className="text-sm font-medium text-pink-600">
               <Link href={`/categories/page/${post.category.slug}`}>
                 <a className="hover:underline">{post.category.name}</a>
@@ -42,7 +42,7 @@ export default function PostDetails({ post }) {
         <div className="mt-6 flex items-center">
           <div className="ml-1">
             <div className="flex space-x-1 text-sm text-gray-500">
-              <LazyLoad offset={400} height={300} once>
+              <LazyLoad offset={400} height={100} once>
                 <time dateTime={post.published_at}>
                   {moment(post.published_at).format("LL")}
                 </time>

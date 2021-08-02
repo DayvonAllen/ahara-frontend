@@ -4,8 +4,6 @@ import Layout from "@/components/Layout";
 import Results from "@/components/Results";
 
 export default function CategoryResults({ foundPosts, categories }) {
-  console.log(foundPosts);
-
   return (
     <Layout categories={categories}>
       <div
