@@ -26,7 +26,6 @@ function Navbar({ categories }) {
     cat.href = `/categories/page/${cat.slug}/`;
     return cat;
   });
-  console.log(fetchedCategories);
 
   fetchedCategories.push({
     name: "All Categories",
@@ -46,16 +45,18 @@ function Navbar({ categories }) {
           <div className="relative z-20">
             <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
               <div>
-                <a href="#" className="flex">
-                  <span className="sr-only">Workflow</span>
-                  <Image
-                    className="h-8 w-auto"
-                    src="https://res.cloudinary.com/df1dxokhm/image/upload/v1627885809/small_ahara_2e302cf169.png"
-                    height="100"
-                    width="100"
-                    alt="ahara logo"
-                  />
-                </a>
+                <Link href="/">
+                  <a className="flex">
+                    <span className="sr-only">Workflow</span>
+                    <Image
+                      className="h-8 w-auto"
+                      src="https://res.cloudinary.com/df1dxokhm/image/upload/v1627885809/small_ahara_2e302cf169.png"
+                      height="100"
+                      width="100"
+                      alt="ahara logo"
+                    />
+                  </a>
+                </Link>
               </div>
               <div className="-mr-2 -my-2 md:hidden">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
@@ -239,5 +240,9 @@ function Navbar({ categories }) {
     </Popover>
   );
 }
+
+Navbar.defaultProps = {
+  categories: [],
+};
 
 export default Navbar;
