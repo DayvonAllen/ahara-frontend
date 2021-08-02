@@ -23,7 +23,8 @@ export default function Layout({
       </Head>
       {router.pathname !== "/404" && <Navbar categories={fetchedCategories} />}
       {router.pathname !== "/categories" &&
-      !router.pathname.includes("/posts/find") ? (
+      !router.pathname.includes("/posts/find") &&
+      router.pathname !== "/search" ? (
         <div className="flex-grow bg-gray-50 "></div>
       ) : null}
       <div
@@ -31,7 +32,12 @@ export default function Layout({
           router.pathname === "/categories"
             ? "flex-grow h-full flex items-center"
             : ""
-        } ${router.pathname.includes("/posts/find") ? "flex-grow" : ""}`}
+        } ${
+          router.pathname.includes("/posts/find") ||
+          router.pathname === "/search"
+            ? "flex-grow"
+            : ""
+        }`}
       >
         {children}
       </div>

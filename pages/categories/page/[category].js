@@ -1,8 +1,11 @@
 import { API_URL } from "@/config/index";
 import PostDetails from "@/components/PostDetails";
 import Layout from "@/components/Layout";
+import Results from "@/components/Results";
 
 export default function CategoryResults({ foundPosts, categories }) {
+  console.log(foundPosts);
+
   return (
     <Layout categories={categories}>
       <div
@@ -14,6 +17,7 @@ export default function CategoryResults({ foundPosts, categories }) {
           <div className="bg-white h-1/3 sm:h-2/3" />
         </div>
         <div className="relative max-w-7xl mx-auto">
+          <Results numberOfPosts={foundPosts?.length} />
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
             {foundPosts?.length > 0 &&
               foundPosts.map((post) => (
