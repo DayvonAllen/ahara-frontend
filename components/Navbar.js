@@ -117,34 +117,36 @@ function Navbar({ categories }) {
                           >
                             <div className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
                               {fetchedCategories.map((category) => (
-                                <Link key={category.slug} href={category.href}>
-                                  <a className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
-                                    <div className="flex md:h-full lg:flex-col">
-                                      <div className="flex-shrink-0">
-                                        <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-pink-500 text-white sm:h-12 sm:w-12">
-                                          <category.icon
-                                            className="h-6 w-6"
-                                            aria-hidden="true"
-                                          />
-                                        </span>
-                                      </div>
-                                      <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
-                                        <div>
-                                          <p className="text-base font-medium text-gray-900">
-                                            {category.name}
-                                          </p>
-                                          <p className="mt-1 text-sm text-gray-500">
-                                            {category.description}
-                                          </p>
-                                        </div>
-                                        <p className="mt-2 text-sm font-medium text-pink-600 lg:mt-4">
-                                          Learn more{" "}
-                                          <span aria-hidden="true">&rarr;</span>
+                                <a
+                                  key={category.slug}
+                                  href={category.href}
+                                  className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
+                                >
+                                  <div className="flex md:h-full lg:flex-col">
+                                    <div className="flex-shrink-0">
+                                      <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-pink-500 text-white sm:h-12 sm:w-12">
+                                        <category.icon
+                                          className="h-6 w-6"
+                                          aria-hidden="true"
+                                        />
+                                      </span>
+                                    </div>
+                                    <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
+                                      <div>
+                                        <p className="text-base font-medium text-gray-900">
+                                          {category.name}
+                                        </p>
+                                        <p className="mt-1 text-sm text-gray-500">
+                                          {category.description}
                                         </p>
                                       </div>
+                                      <p className="mt-2 text-sm font-medium text-pink-600 lg:mt-4">
+                                        Learn more{" "}
+                                        <span aria-hidden="true">&rarr;</span>
+                                      </p>
                                     </div>
-                                  </a>
-                                </Link>
+                                  </div>
+                                </a>
                               ))}
                             </div>
                           </Popover.Panel>
@@ -195,19 +197,21 @@ function Navbar({ categories }) {
                     <nav>
                       <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
                         {fetchedCategories.map((category, i) => (
-                          <Link key={category.slug + i} href={category?.href}>
-                            <a className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50">
-                              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-pink-500 text-white sm:h-12 sm:w-12">
-                                <category.icon
-                                  className="h-6 w-6"
-                                  aria-hidden="true"
-                                />
-                              </div>
-                              <div className="ml-4 text-base font-medium text-gray-900">
-                                {category.name}
-                              </div>
-                            </a>
-                          </Link>
+                          <a
+                            key={category.slug + i}
+                            href={category?.href}
+                            className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50"
+                          >
+                            <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-pink-500 text-white sm:h-12 sm:w-12">
+                              <category.icon
+                                className="h-6 w-6"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <div className="ml-4 text-base font-medium text-gray-900">
+                              {category.name}
+                            </div>
+                          </a>
                         ))}
                       </div>
                     </nav>
