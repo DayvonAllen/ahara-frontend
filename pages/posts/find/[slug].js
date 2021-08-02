@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { API_URL, POST_PER_PAGE } from "@/config/index";
+import { API_URL } from "@/config/index";
 import DOMPurify from "isomorphic-dompurify";
 import marked from "marked";
 

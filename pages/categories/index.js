@@ -9,63 +9,6 @@ const colors = [
   "bg-green-500",
 ];
 
-const projects = [
-  {
-    name: "News",
-    initials: "N",
-    href: "/categories/page/news",
-    bgColor: "bg-pink-600",
-  },
-  {
-    name: "Food",
-    initials: "F",
-    href: "/categories/page/food",
-    members: 12,
-    bgColor: "bg-purple-600",
-  },
-  {
-    name: "Nature",
-    initials: "N",
-    href: "/categories/page/nature",
-    members: 16,
-    bgColor: "bg-yellow-500",
-  },
-  {
-    name: "Story",
-    initials: "S",
-    href: "/categories/page/story",
-    members: 8,
-    bgColor: "bg-green-500",
-  },
-  {
-    name: "News",
-    initials: "N",
-    href: "#",
-    bgColor: "bg-pink-600",
-  },
-  {
-    name: "Cooking",
-    initials: "C",
-    href: "#",
-    members: 12,
-    bgColor: "bg-purple-600",
-  },
-  {
-    name: "Live Abroad",
-    initials: "L",
-    href: "#",
-    members: 16,
-    bgColor: "bg-yellow-500",
-  },
-  {
-    name: "Movies",
-    initials: "M",
-    href: "#",
-    members: 8,
-    bgColor: "bg-green-500",
-  },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -128,6 +71,6 @@ export async function getStaticProps() {
     props: {
       categories,
     },
-    revalidate: 1,
+    revalidate: 300,
   };
 }

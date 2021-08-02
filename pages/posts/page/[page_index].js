@@ -9,20 +9,11 @@ import {
   ArrowNarrowRightIcon,
 } from "@heroicons/react/solid";
 
-export default function Posts({
-  posts,
-  numPages,
-  currentPage,
-  categories,
-  // numberOfPosts,
-  // max,
-}) {
+export default function Posts({ posts, numPages, currentPage, categories }) {
   moment.updateLocale("ja", localization);
 
   const pageCounter = new Array(numPages);
   pageCounter.fill(0);
-
-  // const pagePostCount = (currentPage - 1) * POST_PER_PAGE;
 
   return (
     <Layout
@@ -126,7 +117,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const page = parseInt((params && params?.page_index) || 1);
-  const res = await fetch(`${API_URL}/articles`);
+  const res = await fetch(`${API_URL}/articles?_sort=published_at:DESC`);
   const posts = await res.json();
   const cat = await fetch(`${API_URL}/categories`);
   const categories = await cat.json();
@@ -135,13 +126,10 @@ export async function getStaticProps({ params }) {
 
   const pageIndex = page - 1;
 
-  const orderedPosts = posts
-    .sort((a, b) =>
-      new Date(a.published_at).getTime() > new Date(b.published_at).getTime()
-        ? -1
-        : 1
-    )
-    .slice(pageIndex * POST_PER_PAGE, (pageIndex + 1) * POST_PER_PAGE);
+  const orderedPosts = posts.slice(
+    pageIndex * POST_PER_PAGE,
+    (pageIndex + 1) * POST_PER_PAGE
+  );
 
   return {
     props: {
