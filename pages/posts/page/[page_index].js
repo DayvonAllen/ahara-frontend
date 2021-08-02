@@ -39,7 +39,9 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
           </div>
         </div>
         <nav
-          className={`border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-12 md:w-1/2 mx-auto`}
+          className={`border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-12 md:w-1/2 mx-auto ${
+            posts?.length < 4 ? "md:mt-80 lg:mt-96 xl:p-30 " : ""
+          }`}
         >
           <div className="-mt-px w-0 flex-1 flex z-50">
             {currentPage - 1 >= 1 && (
