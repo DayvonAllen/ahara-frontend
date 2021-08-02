@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import PostDetails from "./PostDetails";
 import Results from "./Results";
-import LazyLoad from "react-lazyload";
 
 export default function SearchResults({ results, posts, searchTerm }) {
   const [foundPosts, setFoundPosts] = useState(posts);
