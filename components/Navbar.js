@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
+import Image from "next/image";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -47,15 +48,17 @@ function Navbar({ categories }) {
               <div>
                 <a href="#" className="flex">
                   <span className="sr-only">Workflow</span>
-                  <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt=""
+                  <Image
+                    className="h-8 w-auto"
+                    src="https://res.cloudinary.com/df1dxokhm/image/upload/v1627885809/small_ahara_2e302cf169.png"
+                    height="100"
+                    width="100"
+                    alt="ahara logo"
                   />
                 </a>
               </div>
               <div className="-mr-2 -my-2 md:hidden">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -84,7 +87,7 @@ function Navbar({ categories }) {
                         <Popover.Button
                           className={classNames(
                             open ? "text-gray-900" : "text-gray-500",
-                            "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
                           )}
                         >
                           <span>Categories</span>
@@ -117,7 +120,7 @@ function Navbar({ categories }) {
                                   <a className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
                                     <div className="flex md:h-full lg:flex-col">
                                       <div className="flex-shrink-0">
-                                        <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
+                                        <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-pink-500 text-white sm:h-12 sm:w-12">
                                           <category.icon
                                             className="h-6 w-6"
                                             aria-hidden="true"
@@ -133,7 +136,7 @@ function Navbar({ categories }) {
                                             {category.description}
                                           </p>
                                         </div>
-                                        <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
+                                        <p className="mt-2 text-sm font-medium text-pink-600 lg:mt-4">
                                           Learn more{" "}
                                           <span aria-hidden="true">&rarr;</span>
                                         </p>
@@ -172,14 +175,16 @@ function Navbar({ categories }) {
                 <div className="pt-5 pb-6 px-5 sm:pb-8">
                   <div className="flex items-center justify-between">
                     <div>
-                      <img
+                      <Image
                         className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt="Workflow"
+                        src="https://res.cloudinary.com/df1dxokhm/image/upload/v1627885809/small_ahara_2e302cf169.png"
+                        height="90"
+                        width="90"
+                        alt="ahara logo"
                       />
                     </div>
                     <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500">
                         <span className="sr-only">Close menu</span>
                         <XIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
@@ -191,7 +196,7 @@ function Navbar({ categories }) {
                         {fetchedCategories.map((category, i) => (
                           <Link key={category.slug + i} href={category?.href}>
                             <a className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50">
-                              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
+                              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-pink-500 text-white sm:h-12 sm:w-12">
                                 <category.icon
                                   className="h-6 w-6"
                                   aria-hidden="true"

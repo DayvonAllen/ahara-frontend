@@ -15,7 +15,7 @@ export default function Results({ numberOfPosts }) {
                   <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
                     Posts Found
                   </dt>
-                  <dd className="order-1 text-5xl font-extrabold text-indigo-600">
+                  <dd className="order-1 text-5xl font-extrabold text-pink-600">
                     {numberOfPosts}
                   </dd>
                 </div>
