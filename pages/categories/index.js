@@ -30,7 +30,10 @@ export default function Categories({ categories }) {
         </h1>
         <ul className="mt-8 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {returnedCategories.map((category, i) => (
-            <Link href={`/categories/page/${category.slug}`}>
+            <Link
+              key={category.name + i}
+              href={`/categories/page/${category.slug}`}
+            >
               <a className={"text-gray-900 font-medium hover:text-gray-400"}>
                 <li
                   key={category.name}

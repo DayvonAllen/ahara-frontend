@@ -24,6 +24,7 @@ export default function Layout({
       {router.pathname !== "/404" && <Navbar categories={fetchedCategories} />}
       {router.pathname !== "/categories" &&
       !router.pathname.includes("/posts/find") &&
+      !router.pathname.includes("/posts/page") &&
       router.pathname !== "/search" ? (
         <div className="flex-grow bg-gray-50 "></div>
       ) : null}
@@ -34,7 +35,8 @@ export default function Layout({
             : ""
         } ${
           router.pathname.includes("/posts/find") ||
-          router.pathname === "/search"
+          router.pathname === "/search" ||
+          router.pathname.includes("/posts/page")
             ? "flex-grow"
             : ""
         }`}
