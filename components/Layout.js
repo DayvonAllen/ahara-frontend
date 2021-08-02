@@ -2,9 +2,16 @@ import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useRouter } from "next/dist/client/router";
-import { API_URL } from "../config";
+import { useState } from "react";
 
-export default function Layout({ title, keywords, description, children }) {
+export default function Layout({
+  title,
+  keywords,
+  description,
+  children,
+  categories,
+}) {
+  const [fetchedCategories, setCategories] = useState(categories);
   const router = useRouter();
 
   return (
@@ -14,13 +21,14 @@ export default function Layout({ title, keywords, description, children }) {
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
       </Head>
-      {router.pathname !== "/404" && <Navbar />}
-      <div className="flex-grow bg-gray-50 "></div>
+      {router.pathname !== "/404" && <Navbar categories={fetchedCategories} />}
+      {router.pathname !== "/categories" && (
+        <div className="flex-grow bg-gray-50 "></div>
+      )}
       <div
         className={`${
-          !router.pathname.includes("/posts")
-            ? "flex-grow"
-            : "h-full flex flex-col"
+          router.pathname === "/categories" &&
+          "flex-grow h-full flex items-center"
         }`}
       >
         {children}

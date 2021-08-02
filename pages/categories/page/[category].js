@@ -4,9 +4,9 @@ import PostDetails from "@/components/PostDetails";
 import Layout from "@/components/Layout";
 // import LazyLoad from "react-lazyload";
 
-export default function CategoryResults({ foundPosts }) {
+export default function CategoryResults({ foundPosts, categories }) {
   return (
-    <Layout>
+    <Layout categories={categories}>
       <div
         className={`relative ${
           foundPosts?.length > 0 ? "bg-gray-50" : "bg-white"
@@ -18,7 +18,9 @@ export default function CategoryResults({ foundPosts }) {
         <div className="relative max-w-7xl mx-auto">
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
             {foundPosts?.length > 0 &&
-              foundPosts.map((post) => <PostDetails post={post} />)}
+              foundPosts.map((post) => (
+                <PostDetails key={post.id} post={post} />
+              ))}
             {foundPosts?.length === 0 && <p>No Result Found</p>}
           </div>
         </div>
@@ -46,6 +48,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const res = await fetch(`${API_URL}/articles`);
   const posts = await res.json();
+  const cat = await fetch(`${API_URL}/categories`);
+  const categories = await cat.json();
 
   const foundPosts = posts?.filter(
     (post) =>
@@ -55,6 +59,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       foundPosts,
+      categories,
     },
     revalidate: 1,
   };

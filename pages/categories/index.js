@@ -74,18 +74,15 @@ export default function Categories({ categories }) {
   const returnedCategories = categories?.map((category, i) => {
     if (i < 4) {
       category.bgColor = colors[i];
-      category.textColor = "hover:" + colors[i];
     } else {
       category.bgColor = colors[Math.ceil(i / 4)];
-      category.textColor = "hover:" + colors[Math.ceil(i / 4)];
     }
-    console.log(category.textColor);
     return category;
   });
   return (
-    <Layout>
-      <div className="text-center w-1/2 mx-auto mt-6">
-        <h1 className="text-gray-500  font-medium uppercase tracking-wide">
+    <Layout categories={categories}>
+      <div className="text-center w-1/2 mx-auto">
+        <h1 className="text-gray-500  font-medium uppercase tracking-wide border-b md:mt-0 mt-4 pb-2 border-gray-200">
           Categories
         </h1>
         <ul className="mt-8 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">

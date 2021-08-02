@@ -31,7 +31,10 @@ export default function SearchResults({ results, posts, searchTerm }) {
       </div>
       <div className="relative max-w-7xl mx-auto">
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {!errors && foundPosts.map((post) => <PostDetails post={post} />)}
+          {!errors &&
+            foundPosts.map((post) => (
+              <PostDetails key={post.title} post={post} />
+            ))}
           {errors && <p>No Result Found</p>}
         </div>
       </div>

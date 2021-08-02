@@ -1,12 +1,14 @@
 import Layout from "@/components/Layout";
 import { CameraIcon } from "@heroicons/react/solid";
+import { API_URL } from "../config/index";
 
-export default function About() {
+export default function About({ categories }) {
   return (
     <Layout
       title="About Ahara"
       description="Short bio about me"
       keywords="bio, life, interests, hobbies"
+      categories={categories}
     >
       <div className="bg-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -102,4 +104,15 @@ export default function About() {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const cat = await fetch(`${API_URL}/categories`);
+  const categories = await cat.json();
+
+  return {
+    props: {
+      categories,
+    },
+  };
 }

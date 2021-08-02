@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import {
   BookmarkAltIcon,
@@ -22,39 +22,28 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 
-const solutions = [
-  {
-    name: "Cooking",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-    href: "#",
-    icon: ChartBarIcon,
-  },
-  {
-    name: "News",
-    description: "Speak directly to your customers in a more meaningful way.",
-    href: "#",
-    icon: CursorClickIcon,
-  },
-  {
-    name: "Live Abroad",
-    description: "Your customers' data will be safe and secure.",
-    href: "#",
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: "All Categories",
-    description: "A list of all available categories",
-    href: "/categories",
-    icon: ViewGridIcon,
-  },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+function Navbar({ categories }) {
+  const icons = [ChartBarIcon, CursorClickIcon, ShieldCheckIcon];
+
+  const featuredCategories = categories.slice(2);
+
+  const fetchedCategories = featuredCategories.map((cat, i) => {
+    cat.icon = icons[i];
+    cat.href = `/categories/page/${cat.slug}`;
+    return cat;
+  });
+
+  fetchedCategories.push({
+    name: "All Categories",
+    description: "A list of all available categories",
+    href: "/categories",
+    icon: ViewGridIcon,
+  });
+
   return (
     <Popover className="relative bg-white z-50">
       {({ open }) => (
@@ -83,17 +72,17 @@ export default function Navbar() {
               </div>
               <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
                 <Popover.Group as="nav" className="flex space-x-10">
-                  <Link href="/">
+                  <Link key="/" href="/">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                       Home
                     </a>
                   </Link>
-                  <Link href="/search">
+                  <Link key="/search" href="/search">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                       Search
                     </a>
                   </Link>
-                  <Link href="/about">
+                  <Link key="/about" href="/about">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                       About
                     </a>
@@ -133,16 +122,13 @@ export default function Navbar() {
                             className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white"
                           >
                             <div className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
-                              {solutions.map((item) => (
-                                <Link href={item.href}>
-                                  <a
-                                    key={item.name}
-                                    className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
-                                  >
+                              {fetchedCategories.map((category) => (
+                                <Link key={category.name} href={category.href}>
+                                  <a className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
                                     <div className="flex md:h-full lg:flex-col">
                                       <div className="flex-shrink-0">
                                         <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                          <item.icon
+                                          <category.icon
                                             className="h-6 w-6"
                                             aria-hidden="true"
                                           />
@@ -151,10 +137,10 @@ export default function Navbar() {
                                       <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                         <div>
                                           <p className="text-base font-medium text-gray-900">
-                                            {item.name}
+                                            {category.name}
                                           </p>
                                           <p className="mt-1 text-sm text-gray-500">
-                                            {item.description}
+                                            {category.description}
                                           </p>
                                         </div>
                                         <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
@@ -212,20 +198,17 @@ export default function Navbar() {
                   <div className="mt-6 sm:mt-8 z-50">
                     <nav>
                       <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
-                        {solutions.map((item) => (
-                          <Link href={item?.href}>
-                            <a
-                              key={item.name}
-                              className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50"
-                            >
+                        {fetchedCategories.map((category, i) => (
+                          <Link key={category.name + i} href={category?.href}>
+                            <a className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50">
                               <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                <item.icon
+                                <category.icon
                                   className="h-6 w-6"
                                   aria-hidden="true"
                                 />
                               </div>
                               <div className="ml-4 text-base font-medium text-gray-900">
-                                {item.name}
+                                {category.name}
                               </div>
                             </a>
                           </Link>
@@ -236,21 +219,18 @@ export default function Navbar() {
                 </div>
                 <div className="py-6 px-5">
                   <div className="grid grid-cols-2 gap-4">
-                    <Link href="/">
+                    <Link key="home-small" href="/">
                       <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                         Home
                       </a>
                     </Link>
-                    <Link href="/search">
+                    <Link key="search-small" href="/search">
                       <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                         Search
                       </a>
                     </Link>
-                    <Link href="/about">
-                      <a
-                        href="#"
-                        className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                      >
+                    <Link key="about-small" href="/about">
+                      <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                         About
                       </a>
                     </Link>
@@ -264,3 +244,5 @@ export default function Navbar() {
     </Popover>
   );
 }
+
+export default Navbar;

@@ -1,11 +1,14 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
-export default function NotFoundPage() {
+import { API_URL } from "../config/index";
+
+export default function NotFoundPage({ categories }) {
   return (
     <Layout
       title="Not Found"
       description="Are you lost?"
       keywords="worng page, not found"
+      categories={categories}
     >
       <main
         className="min-h-screen bg-cover bg-top sm:bg-top"
@@ -35,4 +38,15 @@ export default function NotFoundPage() {
       </main>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const cat = await fetch(`${API_URL}/categories`);
+  const categories = await cat.json();
+
+  return {
+    props: {
+      categories,
+    },
+  };
 }

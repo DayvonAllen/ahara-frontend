@@ -13,21 +13,23 @@ export default function Posts({
   posts,
   numPages,
   currentPage,
-  numberOfPosts,
-  max,
+  categories,
+  // numberOfPosts,
+  // max,
 }) {
   moment.updateLocale("ja", localization);
 
   const pageCounter = new Array(numPages);
   pageCounter.fill(0);
 
-  const pagePostCount = (currentPage - 1) * POST_PER_PAGE;
+  // const pagePostCount = (currentPage - 1) * POST_PER_PAGE;
 
   return (
     <Layout
       title="My Post"
       description="Where the magic happens"
       keywords="food, posts, interesting stories, america"
+      categories={categories}
     >
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">
@@ -41,16 +43,19 @@ export default function Posts({
           </div>
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
             {posts.map((post) => (
-              <PostDetails post={post} />
+              <PostDetails key={post.id} post={post} />
             ))}
           </div>
         </div>
         <nav
-          className={`border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-9 md:w-1/2 mx-auto`}
+          className={`border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-12 md:w-1/2 mx-auto`}
         >
           <div className="-mt-px w-0 flex-1 flex z-50">
             {currentPage - 1 >= 1 && (
-              <Link href={`/posts/page/${currentPage - 1}`}>
+              <Link
+                key={currentPage - 1}
+                href={`/posts/page/${currentPage - 1}`}
+              >
                 <a className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
                   <ArrowNarrowLeftIcon
                     className="mr-3 h-5 w-5 text-gray-400"
@@ -80,7 +85,10 @@ export default function Posts({
           </div>
           <div className="-mt-px w-0 flex-1 flex justify-end z-50">
             {currentPage + 1 <= numPages && (
-              <Link href={`/posts/page/${currentPage + 1}`}>
+              <Link
+                key={currentPage + 1}
+                href={`/posts/page/${currentPage + 1}`}
+              >
                 <a className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
                   Next
                   <ArrowNarrowRightIcon
@@ -120,15 +128,20 @@ export async function getStaticProps({ params }) {
   const page = parseInt((params && params?.page_index) || 1);
   const res = await fetch(`${API_URL}/articles`);
   const posts = await res.json();
+  const cat = await fetch(`${API_URL}/categories`);
+  const categories = await cat.json();
 
   const numPages = Math.ceil(posts?.length / POST_PER_PAGE);
 
   const pageIndex = page - 1;
 
-  const orderedPosts = posts.slice(
-    pageIndex * POST_PER_PAGE,
-    (pageIndex + 1) * POST_PER_PAGE
-  );
+  const orderedPosts = posts
+    .sort((a, b) =>
+      new Date(a.published_at).getTime() > new Date(b.published_at).getTime()
+        ? -1
+        : 1
+    )
+    .slice(pageIndex * POST_PER_PAGE, (pageIndex + 1) * POST_PER_PAGE);
 
   return {
     props: {
@@ -137,6 +150,7 @@ export async function getStaticProps({ params }) {
       currentPage: page,
       numberOfPosts: orderedPosts?.length,
       max: posts?.length,
+      categories,
     },
     revalidate: 1,
   };
