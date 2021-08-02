@@ -47,7 +47,7 @@ function Navbar({ categories }) {
               <div>
                 <Link href="/">
                   <a className="flex">
-                    <span className="sr-only">Workflow</span>
+                    <span className="sr-only">Ahara Kitchen</span>
                     <Image
                       className="h-8 w-auto"
                       src="https://res.cloudinary.com/df1dxokhm/image/upload/v1627885809/small_ahara_2e302cf169.png"
