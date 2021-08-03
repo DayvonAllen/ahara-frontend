@@ -6,12 +6,7 @@ import Link from "next/link";
 
 export default function About({ categories }) {
   return (
-    <Layout
-      title="アバウト"
-      description="アハラキッチンはアメリカの暮らし、レストランで働く仕事事情、国際結婚、ビザの事などを書いています。"
-      keywords="bio, life, interests, hobbies"
-      categories={categories}
-    >
+    <Layout title="アバウト" categories={categories}>
       <div className="bg-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen" />
