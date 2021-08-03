@@ -3,11 +3,7 @@ import Link from "next/link";
 
 export default function NotFoundPage() {
   return (
-    <Layout
-      title="Not Found"
-      description="Are you lost?"
-      keywords="worng page, not found"
-    >
+    <Layout>
       <main
         className="min-h-screen bg-cover bg-top sm:bg-top"
         style={{

@@ -7,8 +7,8 @@ import Link from "next/link";
 export default function About({ categories }) {
   return (
     <Layout
-      title="About Ahara"
-      description="Short bio about me"
+      title="アバウト"
+      description="アハラキッチンはアメリカの暮らし、レストランで働く仕事事情、国際結婚、ビザの事などを書いています。"
       keywords="bio, life, interests, hobbies"
       categories={categories}
     >

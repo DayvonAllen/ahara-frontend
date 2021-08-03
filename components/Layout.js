@@ -20,7 +20,7 @@ export default function Layout({
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
-        <link rel="shortcut icon" href="/ahara-transparent.png" />
+        <link rel="icon" href="/ahara-transparent.png" />
       </Head>
       {router.pathname !== "/404" && <Navbar categories={fetchedCategories} />}
       {router.pathname !== "/categories" &&
@@ -53,7 +53,8 @@ export default function Layout({
 }
 
 Layout.defaultProps = {
-  title: "AharaKitchen | An Awesome Blog",
-  description: "I like to write about a lot of interesting things",
-  keywords: `blog, cooking, food`,
+  title: "アハラキッチン | AharaKitchen",
+  description:
+    "アハラキッチンはアメリカの暮らし、レストランで働く仕事事情、国際結婚、ビザの事などを書いています。",
+  keywords: `海外生活, アメリカ, 国際結婚, 寿司, アメリカの暮らし, レストランで働く仕事事情, ビザ`,
 };
