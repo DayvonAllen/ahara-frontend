@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import {
-  ChartBarIcon,
-  CursorClickIcon,
+  GlobeIcon,
+  FireIcon,
   MenuIcon,
-  ShieldCheckIcon,
   ViewGridIcon,
   XIcon,
+  FlagIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
@@ -17,7 +17,7 @@ function classNames(...classes) {
 }
 
 function Navbar({ categories }) {
-  const icons = [ChartBarIcon, CursorClickIcon, ShieldCheckIcon];
+  const icons = [FlagIcon, GlobeIcon, FireIcon];
 
   const featuredCategories = categories.slice(0, 3);
 
