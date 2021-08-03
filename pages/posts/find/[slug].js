@@ -6,10 +6,11 @@ import marked from "marked";
 export default function Post({ post, categories }) {
   return (
     <Layout
-      title="My First Post"
-      description="My first blog post"
-      keywords="posts, america, food"
+      title={post?.title}
+      description={post?.description}
+      keywords={post?.keywords}
       categories={categories}
+      key={post.id + post.slug}
     >
       <div className="relative py-16 bg-white sm:overflow-hidden overflow-auto">
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full"></div>

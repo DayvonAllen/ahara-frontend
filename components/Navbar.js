@@ -116,9 +116,9 @@ function Navbar({ categories }) {
                             className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white"
                           >
                             <div className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
-                              {fetchedCategories.map((category) => (
+                              {fetchedCategories.map((category, i) => (
                                 <a
-                                  key={category.slug}
+                                  key={category.slug + i}
                                   href={category.href}
                                   className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                                 >

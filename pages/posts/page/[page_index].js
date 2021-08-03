@@ -4,6 +4,7 @@ import moment from "moment";
 import localization from "moment/locale/ja";
 import Link from "next/link";
 import PostDetails from "@/components/PostDetails";
+import { v4 as uuidv4 } from "uuid";
 import {
   ArrowNarrowLeftIcon,
   ArrowNarrowRightIcon,
@@ -17,8 +18,8 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
 
   return (
     <Layout
-      title="My Post"
-      description="Where the magic happens"
+      title="ブログ一覧"
+      description=""
       keywords="food, posts, interesting stories, america"
       categories={categories}
     >
@@ -33,8 +34,8 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
             </h2>
           </div>
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-            {posts.map((post) => (
-              <PostDetails key={post.id} post={post} />
+            {posts.map((post, i) => (
+              <PostDetails key={uuidv4()} post={post} />
             ))}
           </div>
         </div>
@@ -61,9 +62,8 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
           </div>
           <div className="hidden md:-mt-px md:flex z-50">
             {pageCounter.map((page, number) => (
-              <Link key={number} href={"/posts/page/" + (number + 1)}>
+              <Link key={number + page} href={"/posts/page/" + (number + 1)}>
                 <a
-                  key={number}
                   aria-current="page"
                   className={`${
                     number + 1 === currentPage
