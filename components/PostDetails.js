@@ -14,23 +14,27 @@ export default function PostDetails({ post }) {
       <div className="flex-shrink-0">
         <LazyLoad
           key={post.image.formats.medium.url}
-          offset={500}
           height={100}
+          offset={100}
           once
         >
-          <Image
-            className="h-48 w-full object-cover"
-            src={post.image ? post.image.formats.medium.url : ""}
-            width="430"
-            height="350"
-            layout="responsive"
-            alt="blog image"
-          />
+          <Link key={post.id} href={`/posts/find/${post?.slug}`}>
+            <a>
+              <Image
+                className="h-48 w-full object-cover"
+                src={post.image ? post.image.formats.medium.url : ""}
+                width="430"
+                height="350"
+                layout="responsive"
+                alt="blog image"
+              />
+            </a>
+          </Link>
         </LazyLoad>
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <LazyLoad key={post.category.slug} offset={500} height={100} once>
+          <LazyLoad key={post.category.slug} height={100} offset={100} once>
             <p className="text-sm font-medium text-pink-600">
               <Link href={`/categories/page/${post.category.slug}`}>
                 <a className="hover:underline">{post.category.name}</a>
@@ -49,8 +53,8 @@ export default function PostDetails({ post }) {
             <div className="flex space-x-1 text-sm text-gray-500">
               <LazyLoad
                 key={post.category.slug + post.image.formats.medium.url}
-                offset={500}
                 height={100}
+                offset={100}
                 once
               >
                 <time dateTime={post.published_at}>
@@ -59,7 +63,7 @@ export default function PostDetails({ post }) {
                 <span aria-hidden="true"> &middot;</span>
                 <Link key={post.id} href={`/posts/find/${post?.slug}`}>
                   <a>
-                    <span className="hover:text-indigo-500"> Read More</span>
+                    <span className="hover:text-indigo-500"> 続きを読む</span>
                   </a>
                 </Link>
               </LazyLoad>
