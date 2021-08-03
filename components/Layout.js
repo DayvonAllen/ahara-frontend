@@ -20,6 +20,7 @@ export default function Layout({
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
+        <link rel="shortcut icon" href="/ahara.png" />
       </Head>
       {router.pathname !== "/404" && <Navbar categories={fetchedCategories} />}
       {router.pathname !== "/categories" &&
