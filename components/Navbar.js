@@ -28,8 +28,8 @@ function Navbar({ categories }) {
   });
 
   fetchedCategories.push({
-    name: "All Categories",
-    description: "A list of all available categories",
+    name: "全てのカテゴリー",
+    description: "全てのカテゴリーを見る",
     href: "/categories",
     icon: ViewGridIcon,
   });
@@ -68,17 +68,17 @@ function Navbar({ categories }) {
                 <Popover.Group as="nav" className="flex space-x-10">
                   <Link key="/" href="/">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      Home
+                      ホーム
                     </a>
                   </Link>
                   <Link key="/search" href="/search">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      Search
+                      検索
                     </a>
                   </Link>
                   <Link key="/about" href="/about">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      About
+                      アバウト
                     </a>
                   </Link>
 
@@ -91,7 +91,7 @@ function Navbar({ categories }) {
                             "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
                           )}
                         >
-                          <span>Categories</span>
+                          <span>カテゴリー</span>
                           <ChevronDownIcon
                             className={classNames(
                               open ? "text-gray-600" : "text-gray-400",
@@ -141,7 +141,7 @@ function Navbar({ categories }) {
                                         </p>
                                       </div>
                                       <p className="mt-2 text-sm font-medium text-pink-600 lg:mt-4">
-                                        Learn more{" "}
+                                        さらに詳しく{" "}
                                         <span aria-hidden="true">&rarr;</span>
                                       </p>
                                     </div>
@@ -221,17 +221,17 @@ function Navbar({ categories }) {
                   <div className="grid grid-cols-2 gap-4">
                     <Link key="home-small" href="/">
                       <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                        Home
+                        ホーム
                       </a>
                     </Link>
                     <Link key="search-small" href="/search">
                       <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                        Search
+                        検索
                       </a>
                     </Link>
                     <Link key="about-small" href="/about">
                       <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                        About
+                        アバウト
                       </a>
                     </Link>
                   </div>

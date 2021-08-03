@@ -13,7 +13,7 @@ export default function Results({ numberOfPosts }) {
               <dl className="rounded-lg bg-gray-50 shadow-lg sm:grid sm:grid-cols-1">
                 <div className="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
                   <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
-                    Posts Found
+                    ポスト
                   </dt>
                   <dd className="order-1 text-5xl font-extrabold text-pink-600">
                     {numberOfPosts}

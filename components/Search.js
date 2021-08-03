@@ -39,7 +39,7 @@ export default function Search({ posts, categories }) {
           id="search"
           name="search"
           className="block md:w-1/2 w-3/4 mt-16  md:mt:0 h-12 bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
-          placeholder="Search Posts"
+          placeholder="記事検索"
           onChange={(e) => setSearchTerm(e.target.value)}
           type="search"
         />

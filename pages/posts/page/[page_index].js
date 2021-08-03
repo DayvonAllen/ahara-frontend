@@ -29,7 +29,7 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-              Latest Posts
+              ブログ一覧
             </h2>
           </div>
           <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
@@ -54,7 +54,7 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
                     className="mr-3 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
-                  Previous
+                  前に戻る
                 </a>
               </Link>
             )}
@@ -83,7 +83,7 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
                 href={`/posts/page/${currentPage + 1}`}
               >
                 <a className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                  Next
+                  次へ
                   <ArrowNarrowRightIcon
                     className="ml-3 h-5 w-5 text-gray-400"
                     aria-hidden="true"
