@@ -14,7 +14,7 @@ export default function PostDetails({ post }) {
       <div className="flex-shrink-0">
         <LazyLoad
           key={post.image.formats.medium.url}
-          offset={400}
+          offset={500}
           height={100}
           once
         >
@@ -30,7 +30,7 @@ export default function PostDetails({ post }) {
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <LazyLoad key={post.category.slug} offset={400} height={100} once>
+          <LazyLoad key={post.category.slug} offset={500} height={100} once>
             <p className="text-sm font-medium text-pink-600">
               <Link href={`/categories/page/${post.category.slug}`}>
                 <a className="hover:underline">{post.category.name}</a>
@@ -49,14 +49,14 @@ export default function PostDetails({ post }) {
             <div className="flex space-x-1 text-sm text-gray-500">
               <LazyLoad
                 key={post.category.slug + post.image.formats.medium.url}
-                offset={400}
+                offset={500}
                 height={100}
                 once
               >
                 <time dateTime={post.published_at}>
                   {moment(post.published_at).format("LL")}
                 </time>
-                <span aria-hidden="true">&middot;</span>
+                <span aria-hidden="true"> &middot;</span>
                 <Link key={post.id} href={`/posts/find/${post?.slug}`}>
                   <a>
                     <span className="hover:text-indigo-500"> Read More</span>
