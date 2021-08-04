@@ -137,6 +137,6 @@ export async function getStaticProps({ params }) {
       max: posts?.length,
       categories,
     },
-    revalidate: 330,
+    revalidate: 75,
   };
 }
