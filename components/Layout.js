@@ -22,7 +22,6 @@ export default function Layout({
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <link rel="icon" href="/ahara-transparent.png" />
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
