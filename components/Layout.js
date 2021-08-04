@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
+import { GA_TRACKING_ID } from "lib/gtag";
 
 export default function Layout({
   title,
@@ -21,6 +22,23 @@ export default function Layout({
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <link rel="icon" href="/ahara-transparent.png" />
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
       </Head>
       {router.pathname !== "/404" && <Navbar categories={fetchedCategories} />}
       {router.pathname !== "/categories" &&

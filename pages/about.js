@@ -8,7 +8,7 @@ export default function About({ categories }) {
   return (
     <Layout title="アバウト" categories={categories}>
       <div className="bg-white overflow-hidden">
-        <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto py-40 px-4 sm:px-6 lg:px-8">
           <div className="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen" />
           <div className="mx-auto text-base max-w-prose lg:grid lg:grid-cols-2 lg:gap-8 lg:max-w-none">
             <div>
@@ -24,10 +24,10 @@ export default function About({ categories }) {
                   <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
                     <Image
                       className="rounded-lg shadow-lg object-cover object-center"
-                      src="https://res.cloudinary.com/df1dxokhm/image/upload/v1628028884/ahara_pink_00ce14ccb6.png"
-                      alt="ahara logo"
-                      width={1184}
-                      height={1376}
+                      src="https://res.cloudinary.com/df1dxokhm/image/upload/v1628053285/img_03082021_2359_9855bb7ffe.png"
+                      alt="ahara pic"
+                      width={460}
+                      height={500}
                     />
                   </div>
                 </figure>
