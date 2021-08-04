@@ -36,7 +36,7 @@ export async function getStaticPaths() {
   const paths = [];
   for (let i = 0; i < posts?.length; i++) {
     paths.push({
-      params: { category: posts[i]?.category?.slug + "" },
+      params: { category: posts[i]?.category?.slug },
     });
   }
   return {
