@@ -41,7 +41,7 @@ export async function getStaticPaths() {
   }
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
@@ -61,6 +61,6 @@ export async function getStaticProps({ params }) {
       foundPosts,
       categories,
     },
-    revalidate: 30,
+    revalidate: 75,
   };
 }
