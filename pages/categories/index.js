@@ -48,8 +48,13 @@ export default function Categories({ categories }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/categories`);
-  const categories = await res.json();
+  let categories = [];
+  try {
+    const res = await fetch(`${API_URL}/categories`);
+    categories = await res.json();
+  } catch (e) {
+    console.log(e);
+  }
 
   return {
     props: {
