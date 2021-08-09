@@ -94,20 +94,8 @@ export default function Posts({ posts, numPages, currentPage, categories }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${API_URL}/articles`);
-  const posts = await res.json();
-
-  const numPages = Math.ceil(posts?.length / POST_PER_PAGE);
-
-  const paths = [];
-
-  for (let i = 1; i <= numPages; i++) {
-    paths.push({
-      params: { page_index: i.toString() },
-    });
-  }
   return {
-    paths,
+    paths: [],
     fallback: "blocking",
   };
 }
