@@ -15,7 +15,7 @@ export default async (req, res) => {
     posts.map((post) => {
       links.push({
         url: `/posts/find/${post?.slug}`,
-        changefreq: "monthly",
+        changefreq: "daily",
         priority: 0.9,
       });
     });
@@ -23,7 +23,7 @@ export default async (req, res) => {
     categories.map((category) => {
       links.push({
         url: `/categories/page/${category?.slug}`,
-        changefreq: "weekly",
+        changefreq: "daily",
         priority: 0.9,
       });
     });
@@ -31,7 +31,7 @@ export default async (req, res) => {
     for (let i = 1; i <= numPages; i++) {
       links.push({
         url: `/posts/page/${i}`,
-        changefreq: "weekly",
+        changefreq: "daily",
         priority: 0.9,
       });
     }
@@ -41,7 +41,7 @@ export default async (req, res) => {
     pages.map((url) => {
       links.push({
         url,
-        changefreq: "monthly",
+        changefreq: "daily",
         priority: 0.9,
       });
     });
