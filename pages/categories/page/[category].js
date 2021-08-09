@@ -30,17 +30,8 @@ export default function CategoryResults({ foundPosts, categories }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${API_URL}/articles`);
-  const posts = await res.json();
-
-  const paths = [];
-  for (let i = 0; i < posts?.length; i++) {
-    paths.push({
-      params: { category: posts[i]?.category?.slug },
-    });
-  }
   return {
-    paths,
+    paths: [],
     fallback: "blocking",
   };
 }
